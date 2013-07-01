@@ -1,4 +1,4 @@
-define(["canvas", "resources", "events"], function(Canvas, Resources, Events) {
+define(["1gamlib/canvas", "1gamlib/resources", "1gamlib/events"], function(Canvas, Resources, Events) {
 	var Position = function(x, y) {
 		return {X: x, Y: y};
 	}

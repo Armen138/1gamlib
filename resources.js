@@ -1,4 +1,4 @@
-define(["events", "racket"], function(events, Racket) {
+define(["1gamlib/events", "1gamlib/racket"], function(events, Racket) {
     if(window._GAME_RESOURCES_) {
         return window._GAME_RESOURCES_;
     }

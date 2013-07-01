@@ -1,5 +1,5 @@
-define(["raf",
-        "canvas"
+define(["1gamlib/raf",
+        "1gamlib/canvas"
         /*"stats.min"*/],
     function(raf, Canvas /*Stats*/) {
     "strict mode";
