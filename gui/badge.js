@@ -1,4 +1,4 @@
-define(["canvas", "1gamlib/gui/element"], function(Canvas, Element) {
+define(["1gamlib/canvas", "1gamlib/gui/element"], function(Canvas, Element) {
 	var Badge = function(obj) {
 	    var badge = Element({
 	        position: { X: 30, Y: 80 },
