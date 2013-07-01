@@ -73,5 +73,5 @@ define(function() {
 	// } else {
 	// 	window.Racket = Racket;
 	// }
-    return racket;
+    return Racket;
 });
