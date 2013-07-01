@@ -24,9 +24,9 @@
 
 define(function() {
     var SimplexNoise = function() {
-      var grad = [bt.Vector(1,1),bt.Vector(-1,1),bt.Vector(1,-1),bt.Vector(-1,-1),
-                   bt.Vector(1,0),bt.Vector(-1,0),bt.Vector(1,0),bt.Vector(-1,0),
-                   bt.Vector(0,1),bt.Vector(0,-1),bt.Vector(0,1),bt.Vector(0,-1)],
+      var grad = [{X:1,Y:1},{X:-1,Y:1},{X:1,Y:-1},{X:-1,Y:-1},
+                   {X:1,Y:0},{X:-1,Y:0},{X:1,Y:0},{X:-1,Y:0},
+                   {X:0,Y:1},{X:0,Y:-1},{X:0,Y:1},{X:0,Y:-1}],
           p = [], perm = [], permMod12 = [], i,
           F2 = 0.5*(Math.sqrt(3.0)-1.0),
           G2 = (3.0-Math.sqrt(3.0))/6.0;
