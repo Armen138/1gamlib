@@ -1,5 +1,5 @@
-define("canvas", function() {
-	var canvas = document.getElementsByTagName("canvas")[0];	
+define(function() {
+	var canvas = document.getElementsByTagName("canvas")[0];
 	function Canvas(canvas) {
 		canvas = canvas || document.createElement("canvas");
 		// canvas.style.zIndex = 55;

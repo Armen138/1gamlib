@@ -1,5 +1,4 @@
-define("game",
-        ["raf",
+define(["raf",
         "canvas"
         /*"stats.min"*/],
     function(raf, Canvas /*Stats*/) {
@@ -95,10 +94,10 @@ define("game",
             if(touches.length > 0) {
                 var x = (touches[0].pageX | 0);// - Canvas.position.X;
                 var y = (touches[0].pageY | 0);// - Canvas.position.Y;
-                game.state.mousedown({X: x, Y: y}); 
-                game.touches[touches[0].identifier] = Date.now();               
+                game.state.mousedown({X: x, Y: y});
+                game.touches[touches[0].identifier] = Date.now();
             }
-        }        
+        }
     });
 
 
@@ -109,10 +108,10 @@ define("game",
             if(touches.length > 0) {
                 var x = (touches[0].pageX | 0);// - Canvas.position.X;
                 var y = (touches[0].pageY | 0);// - Canvas.position.Y;
-                game.state.mousemove({X: x, Y: y}); 
-                //game.touches[touches[0].identifier] = Date.now();               
+                game.state.mousemove({X: x, Y: y});
+                //game.touches[touches[0].identifier] = Date.now();
             }
-        }        
+        }
     });
 
     window.addEventListener("touchend", function(e) {
@@ -122,14 +121,14 @@ define("game",
             if(touches.length > 0) {
                 var x = (touches[0].pageX | 0);// - Canvas.position.X;
                 var y = (touches[0].pageY | 0);// - Canvas.position.Y;
-                game.state.mouseup({X: x, Y: y});           
-            
+                game.state.mouseup({X: x, Y: y});
+
                 //game.touches[touches[0].identifier] = null;
             }
-        } 
+        }
         console.log(game.touches[touches[0].identifier]);
         console.log(Date.now() - game.touches[touches[0].identifier]);
-        if(/*game.touches[touches[0].identifier] && 
+        if(/*game.touches[touches[0].identifier] &&
             Date.now() - game.touches[touches[0].identifier] < 400 &&*/
             game.state.click) {
             //if(touches.length > 0) {
@@ -138,8 +137,8 @@ define("game",
 
                 game.state.click({X: x, Y: y})
             //}
-        }            
-        
+        }
+
     });
     return game;
 });

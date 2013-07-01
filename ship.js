@@ -1,4 +1,4 @@
-define("ship", [
+define([
 	"events",
 	"resources",
 	"trail",
@@ -20,17 +20,17 @@ define("ship", [
 		sideways: 0,
 		gravity: 1,
 		jump: 4
-	};	
-	var Ship = function(scene, camera) {		
+	};
+	var Ship = function(scene, camera) {
 	    var shipMesh =  new THREE.Mesh(Resources.ship.geometry, Resources.ship.material);
 	    shipMesh.rotation.x += Math.PI / 2;
 	    shipMesh.rotation.y = Math.PI;
-	    shipMesh.scale.set(2, 2, 2);	
-	    shipMesh.castShadow = true;	
+	    shipMesh.scale.set(2, 2, 2);
+	    shipMesh.castShadow = true;
 	    shipMesh.name = "ship";
-		var groundCheck = new THREE.Raycaster();//shipMesh.position, );	    	
+		var groundCheck = new THREE.Raycaster();//shipMesh.position, );
 		var noseCheck = new THREE.Raycaster();
-		var front = new THREE.Vector3(0, 1, 0); 
+		var front = new THREE.Vector3(0, 1, 0);
 		var down = new THREE.Vector3(0, 0, -1);
 		var jumpStart = 0;
 		scene.add(shipMesh);
@@ -38,7 +38,7 @@ define("ship", [
 
 		var trail = Trail(scene, shipMesh, new THREE.Vector3(0, -5, 0));
 
-		function particleUpdate() {			
+		function particleUpdate() {
 			trail.update();
 		}
 
@@ -48,7 +48,7 @@ define("ship", [
 			}
 			if(shipMesh.position.x > limits.strafes) {
 				shipMesh.position.x = limits.strafes;
-			}			
+			}
 			if(shipMesh.rotation.z < -limits.rotation) {
 				shipMesh.rotation.z = -limits.rotation;
 			}
@@ -101,7 +101,7 @@ define("ship", [
 				} else {
 					console.log("no more ground!");
 					shipMesh.position.z -= speed.gravity;
-					if(shipMesh.position.z < -100) {						
+					if(shipMesh.position.z < -100) {
 						ship.fire("death");
 					}
 				}
@@ -115,18 +115,18 @@ define("ship", [
 							camera.position.y -= 20 - f[i].distance;
 							speed.current = 0;
 							// console.log("bloo");
-						}						
+						}
 					}
 				}
 				if(now - jumpStart < limits.jump) {
 					var upforce = speed.jump - speed.jump * (now - jumpStart) / limits.jump;
 					shipMesh.position.z += upforce;
 				}
-				
+
 				// console.log(c);
 				// if(ship.control.jump) {
 				// 	shipMesh.position.z += d / 5;
-				// }				
+				// }
 				particleUpdate();
 				if(ship.control.left) {
 					speed.sideways -= d / 500;
@@ -139,35 +139,35 @@ define("ship", [
 					shipMesh.rotation.z += d / 500;
 				}
 				if(ship.control.up) {
-					//shipMesh.position.y += d / 5;	
+					//shipMesh.position.y += d / 5;
 					trail.emit = true;
-					speed.current += d / 500;					
+					speed.current += d / 500;
 				} else {
 					trail.emit = false;
 					speed.current -= d / 500;
 				}
 				// if(ship.control.down) {
-				// 	shipMesh.position.y -= d / 5;	
+				// 	shipMesh.position.y -= d / 5;
 				// 	camera.position.y -= d / 5;
-				// }				
+				// }
 				if(!ship.control.left && !ship.control.right && shipMesh.rotation.z !== 0) {
 					if(shipMesh.rotation.z < 0) {
 						shipMesh.rotation.z += d /500;
 					}
 					if(shipMesh.rotation.z > 0) {
 						shipMesh.rotation.z -= d /500;
-					}					
+					}
 					if(speed.sideways < 0) {
 						speed.sideways += d / 800;
 					}
 					if(speed.sideways > 0) {
 						speed.sideways -= d / 800;
 					}
-				}				
-				limit();		
+				}
+				limit();
 				shipMesh.position.y += speed.current;
 				shipMesh.position.x += speed.sideways;
-				camera.position.y += speed.current;		
+				camera.position.y += speed.current;
 
 			}
 

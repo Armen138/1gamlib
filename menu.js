@@ -1,4 +1,4 @@
-define("menu", ["easing"], function(easing) {
+define(["easing"], function(easing) {
     var color = "rgba(0, 0, 0, 0.7)",
         width = 324,
         buffer = 80,

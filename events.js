@@ -1,4 +1,4 @@
-(function() {
+define(function() {
  	var events = {
         attach: function(obj) {
             var eventList = {},
@@ -34,5 +34,5 @@
             }
         }
     };
-    define("events", events);
-}());
+    return events;
+});

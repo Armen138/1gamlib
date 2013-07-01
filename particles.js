@@ -1,4 +1,4 @@
-define("particles", ["canvas", "resources", "events"], function(Canvas, Resources, Events) {
+define(["canvas", "resources", "events"], function(Canvas, Resources, Events) {
 	var Position = function(x, y) {
 		return {X: x, Y: y};
 	}
@@ -48,7 +48,7 @@ define("particles", ["canvas", "resources", "events"], function(Canvas, Resource
 						var distance = life * particle.speed;
 						//console.log(distance);
 						particle.position.X = particle.startPosition.X + distance * particle.direction.X;
-		                particle.position.Y = particle.startPosition.Y + distance * particle.direction.Y;					
+		                particle.position.Y = particle.startPosition.Y + distance * particle.direction.Y;
 		                particle.angle += 0.1;
 		                particle.alpha = 1 - (life / particle.ttl);
 		                //console.log(particle.startPosition);
@@ -66,8 +66,8 @@ define("particles", ["canvas", "resources", "events"], function(Canvas, Resource
 	                Canvas.context.scale(particle.scale, particle.scale);
 	                Canvas.context.rotate(particle.angle);
 	                Canvas.context.globalAlpha = particle.alpha;
-	                Canvas.context.drawImage(particle.image, -particle.image.width / 2, -particle.image.height / 2);                
-	                Canvas.context.restore();								
+	                Canvas.context.drawImage(particle.image, -particle.image.width / 2, -particle.image.height / 2);
+	                Canvas.context.restore();
 				}
 			}
 		};
@@ -138,7 +138,7 @@ define("particles", ["canvas", "resources", "events"], function(Canvas, Resource
 			}
 		};
 		Events.attach(p);
-		return p;		
+		return p;
 	}
 	return particles;
 });

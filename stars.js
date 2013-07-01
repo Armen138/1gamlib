@@ -1,4 +1,4 @@
-define("stars", ["resources"], function(Resources) {
+define(["resources"], function(Resources) {
 var PARTICLECOUNT = 500,
 	MAXDISTANCE = 5000,
     particles = new THREE.Geometry();
@@ -28,7 +28,7 @@ var PARTICLECOUNT = 500,
 				pY = Math.random() * MAXDISTANCE,
 				pZ = Math.random() * 1500 - 750,
 				particle = new THREE.Vector3(pX, pY, pZ);
-				
+
 
 			// add it to the geometry
 			particles.vertices.push(particle);

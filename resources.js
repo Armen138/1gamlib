@@ -1,4 +1,4 @@
-define("resources", ["events", "racket"], function(events, Racket) {
+define(["events", "racket"], function(events, Racket) {
     if(window._GAME_RESOURCES_) {
         return window._GAME_RESOURCES_;
     }
@@ -31,7 +31,7 @@ define("resources", ["events", "racket"], function(events, Racket) {
                 }
                 resources.load.total++;
                 switch(type) {
-                    case "audio": 
+                    case "audio":
                         (function(file) {
                             resources[file] = Racket.create(files[file], function(success) {
                                 if(!success) {
@@ -39,7 +39,7 @@ define("resources", ["events", "racket"], function(events, Racket) {
                                 }
                                 loaded(file);
                             });
-                        }(file));                    
+                        }(file));
                     break;
                     case "mesh":
                         if(meshLoader === null) {
@@ -48,11 +48,11 @@ define("resources", ["events", "racket"], function(events, Racket) {
                         (function(file) {
                             meshLoader.load(files[file], function(geometry, material) {
                                 console.log(material);
-                                console.log("3d file loaded");                                
+                                console.log("3d file loaded");
                                 var faceMaterial = new THREE.MeshFaceMaterial(material);
                                 resources[file] = { geometry: geometry, material: faceMaterial }; //new THREE.Mesh(geometry, faceMaterial);
                                 loaded(file);
-                            });                            
+                            });
                         }(file));
                     break;
                     default:
@@ -69,8 +69,8 @@ define("resources", ["events", "racket"], function(events, Racket) {
                         }(img, file));
                         img.src = files[file];
                         img.setAttribute("class", "resources");
-                        img.setAttribute("name", file);                    
-                        resources[file] = img;                    
+                        img.setAttribute("name", file);
+                        resources[file] = img;
                     break;
                 }
             }

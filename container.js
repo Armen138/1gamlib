@@ -1,4 +1,4 @@
-define("container", function() {
+define(function() {
 	var Container = function() {
 		var items = [];
 		var container = {
@@ -28,7 +28,7 @@ define("container", function() {
 				});
 			}
 		};
-		return container;		
+		return container;
 	};
 	return Container;
 });

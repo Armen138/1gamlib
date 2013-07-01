@@ -1,6 +1,6 @@
 /*jshint newcap:false, nonew:true */
 /*global console, define */
-(function() {
+define(function() {
 	"use strict";
 	function audio(files, callback) {
 		var file = new Audio(),
@@ -56,8 +56,8 @@
 			//for(var i = 0; i < maxChannels; i++) {
 				channels.push(new Audio(files));
 				if(channels[0].load) {
-					channels[0].load();	
-				}				
+					channels[0].load();
+				}
 			//}
 			callback(true);
 		}
@@ -68,9 +68,10 @@
 		create: audio
 	};
 
-	if(typeof define !== "undefined") {
-		define("racket", Racket);
-	} else {
-		window.Racket = Racket;
-	}
-}());
+	// if(typeof define !== "undefined") {
+	// 	define("racket", Racket);
+	// } else {
+	// 	window.Racket = Racket;
+	// }
+    return racket;
+});

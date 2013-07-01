@@ -1,4 +1,4 @@
-define("collisionbox", function() {
+define(function() {
 	var CollisionBox = function(data) {
 		"use strict";
 		var collisionbox = {

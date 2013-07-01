@@ -1,4 +1,4 @@
-define("easing", function() {
+define(function() {
 	/* t=now b=start c=change d=duration*/
 	return function (t, b, c, d) {
         if ((t/=d) < (1/2.75)) {
