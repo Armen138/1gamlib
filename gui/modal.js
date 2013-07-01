@@ -1,4 +1,4 @@
-define(["easing", "canvas", "gui/element"], function(easing, Canvas, Element) {
+define(["1gamlib/easing", "1gamlib/canvas", "1gamlib/gui/element"], function(easing, Canvas, Element) {
     var color = "rgba(0, 0, 0, 0.5)",
         buffer = 80,
         duration = 500;

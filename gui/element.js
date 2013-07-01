@@ -1,4 +1,4 @@
-define(["canvas", "events"], function(Canvas, Events) {
+define(["1gamlib/canvas", "1gamlib/events"], function(Canvas, Events) {
 	var Element = function(obj) {
 		var elements = [];
 		var element = {
