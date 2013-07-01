@@ -1,9 +1,9 @@
-define("gui/modal", ["easing", "canvas", "gui/element"], function(easing, Canvas, Element) {
+define(["easing", "canvas", "gui/element"], function(easing, Canvas, Element) {
     var color = "rgba(0, 0, 0, 0.5)",
         buffer = 80,
         duration = 500;
 
-    return function(size) {        
+    return function(size) {
         var start = 0, from, to,
             position = {X: 0, Y: Canvas.height / 2 - size.height / 2 },
             context = Canvas.context;
@@ -35,12 +35,12 @@ define("gui/modal", ["easing", "canvas", "gui/element"], function(easing, Canvas
             to = (Canvas.width / 2) - (size.width / 2) + size.width;
             position.X = from;
         });
-        
+
         modal.on("run", function() {
             if(start === 0) return;
             var now = Date.now() - start,
                 sign = -1;
-                
+
             if(now < duration) {
                 position.X = easing(now, from, to, duration) | 0;
             } else {
@@ -48,7 +48,7 @@ define("gui/modal", ["easing", "canvas", "gui/element"], function(easing, Canvas
                 if(to < 0 && modal.done) {
                     modal.done();
                 }
-            }                
+            }
             context.drawImage(modal.background, 0, 0);
             context.fillStyle = color;
             context.fillRect(position.X, position.Y, size.width, size.height);

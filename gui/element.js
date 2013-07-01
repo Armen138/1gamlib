@@ -1,14 +1,14 @@
-define("gui/element", ["canvas", "events"], function(Canvas, Events) {
+define(["canvas", "events"], function(Canvas, Events) {
 	var Element = function(obj) {
 		var elements = [];
 		var element = {
 			eat: function(obj) {
 				for(var prop in obj) {
 					element[prop] = obj[prop];
-				}			
+				}
 			},
 			add: function(e) {
-				elements.push(e);				
+				elements.push(e);
 			},
 			position: {X: 0, Y: 0},
 			size:  {width: 0, height: 0},
@@ -25,9 +25,9 @@ define("gui/element", ["canvas", "events"], function(Canvas, Events) {
                     mouse.Y < element.position.Y + element.size.height)  {
                     for(var i = 0; i < elements.length; i++) {
                         elements[i].click({X: mouse.X - element.position.X, Y: mouse.Y - element.position.Y });
-                    }                    
+                    }
                     element.fire("click");
-                }                
+                }
 			},
 			run: function() {
 				element.fire("run");
@@ -35,8 +35,8 @@ define("gui/element", ["canvas", "events"], function(Canvas, Events) {
 				Canvas.context.translate(element.position.X, element.position.Y);
 				for(var i = 0; i < elements.length; i++) {
 					elements[i].run();
-				}				
-				Canvas.context.restore();				
+				}
+				Canvas.context.restore();
 			}
 		};
 		if(obj) {
