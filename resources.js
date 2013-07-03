@@ -48,7 +48,8 @@ define(["1gamlib/events", "1gamlib/racket"], function(events, Racket) {
                         (function(file) {
                             meshLoader.load(files[file], function(geometry, material) {
                                 console.log(material);
-                                console.log("3d file loaded");
+                                console.log("3d file loaded: " + file);
+                                material.shading = THREE.FlatShading;
                                 var faceMaterial = new THREE.MeshFaceMaterial(material);
                                 resources[file] = { geometry: geometry, material: faceMaterial }; //new THREE.Mesh(geometry, faceMaterial);
                                 loaded(file);
