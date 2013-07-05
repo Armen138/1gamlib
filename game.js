@@ -66,15 +66,16 @@ define(["1gamlib/raf",
         if(game.state && game.state.click) {
             var x = e.clientX - Canvas.position.X;
             var y = e.clientY - Canvas.position.Y;
-            game.state.click({X: x, Y: y});
+            game.state.click({X: x, Y: y, button: e.button});
         }
     });
 
     window.addEventListener("mousedown", function(e) {
+        e.preventDefault();
         if(game.state && game.state.mousedown) {
             var x = e.clientX - Canvas.position.X;
             var y = e.clientY - Canvas.position.Y;
-            game.state.mousedown({X: x, Y: y});
+            game.state.mousedown({X: x, Y: y, button: e.button});
         }
     });
 
@@ -83,7 +84,7 @@ define(["1gamlib/raf",
         if(game.state && game.state.mouseup) {
             var x = e.clientX - Canvas.position.X;
             var y = e.clientY - Canvas.position.Y;
-            game.state.mouseup({X: x, Y: y});
+            game.state.mouseup({X: x, Y: y, button: e.button});
         }
     });
 
