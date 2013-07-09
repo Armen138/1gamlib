@@ -11,6 +11,7 @@ define(["1gamlib/raf",
     // document.body.appendChild( stats.domElement );
 
     var game = {
+            mouse: [],
             run: function() {
                 // stats.begin();
                 if(game.state) {
@@ -62,23 +63,24 @@ define(["1gamlib/raf",
         }
     });
 
-    window.addEventListener("contextmenu", function(e) {
-        if(game.state && game.state.click) {
-            var x = e.clientX - Canvas.position.X;
-            var y = e.clientY - Canvas.position.Y;
-            game.state.click({X: x, Y: y, button: 2});
-        }
-    });
+    // window.addEventListener("contextmenu", function(e) {
+    //     if(game.state && game.state.click) {
+    //         var x = e.clientX - Canvas.position.X;
+    //         var y = e.clientY - Canvas.position.Y;
+    //         game.state.click({X: x, Y: y, button: 2});
+    //     }
+    // });
 
-    window.addEventListener("click", function(e) {
-        if(game.state && game.state.click) {
-            var x = e.clientX - Canvas.position.X;
-            var y = e.clientY - Canvas.position.Y;
-            game.state.click({X: x, Y: y, button: e.button});
-        }
-    });
+    // window.addEventListener("click", function(e) {
+    //     if(game.state && game.state.click) {
+    //         var x = e.clientX - Canvas.position.X;
+    //         var y = e.clientY - Canvas.position.Y;
+    //         game.state.click({X: x, Y: y, button: e.button});
+    //     }
+    // });
 
     window.addEventListener("mousedown", function(e) {
+        game.mouse[e.button] = Date.now();
         e.preventDefault();
         if(game.state && game.state.mousedown) {
             var x = e.clientX - Canvas.position.X;
@@ -89,6 +91,15 @@ define(["1gamlib/raf",
 
 
     window.addEventListener("mouseup", function(e) {
+        var now = Date.now();
+        if(now - game.mouse[e.button] < 50) {
+            if(game.state && game.state.click) {
+                var x = e.clientX - Canvas.position.X;
+                var y = e.clientY - Canvas.position.Y;
+                game.state.click({X: x, Y: y, button: e.button});
+            }
+        }
+        game.mouse[e.button] = null;
         if(game.state && game.state.mouseup) {
             var x = e.clientX - Canvas.position.X;
             var y = e.clientY - Canvas.position.Y;
