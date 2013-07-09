@@ -92,7 +92,7 @@ define(["1gamlib/raf",
 
     window.addEventListener("mouseup", function(e) {
         var now = Date.now();
-        if(now - game.mouse[e.button] < 50) {
+        if(now - game.mouse[e.button] < 150) {
             if(game.state && game.state.click) {
                 var x = e.clientX - Canvas.position.X;
                 var y = e.clientY - Canvas.position.Y;
