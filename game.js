@@ -62,6 +62,14 @@ define(["1gamlib/raf",
         }
     });
 
+    window.addEventListener("contextmenu", function(e) {
+        if(game.state && game.state.click) {
+            var x = e.clientX - Canvas.position.X;
+            var y = e.clientY - Canvas.position.Y;
+            game.state.click({X: x, Y: y, button: 3});
+        }
+    });
+
     window.addEventListener("click", function(e) {
         if(game.state && game.state.click) {
             var x = e.clientX - Canvas.position.X;
