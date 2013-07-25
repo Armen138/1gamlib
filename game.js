@@ -43,7 +43,11 @@ define(["1gamlib/raf",
 
     window.addEventListener("keyup", function(e) {
         if(game.state && game.state.keyup) {
-            game.state.keyup(e.keyCode);
+            game.state.keyup(e.keyCode, {
+                ctrl: e.ctrlKey,
+                alt: e.altKey,
+                shift: e.shiftKey
+            });
         }
         if(e.keyCode === 27) {
             game.state = game.paused;
@@ -51,7 +55,11 @@ define(["1gamlib/raf",
     });
     window.addEventListener("keydown", function(e) {
         if(game.state && game.state.keydown) {
-            game.state.keydown(e.keyCode);
+            game.state.keydown(e.keyCode, {
+                ctrl: e.ctrlKey,
+                alt: e.altKey,
+                shift: e.shiftKey
+            });
         }
     });
 
@@ -79,7 +87,7 @@ define(["1gamlib/raf",
     //     }
     // });
 
-    window.addEventListener("mousedown", function(e) {
+    Canvas.element.addEventListener("mousedown", function(e) {
         game.mouse[e.button] = Date.now();
         e.preventDefault();
         if(game.state && game.state.mousedown) {
@@ -90,7 +98,7 @@ define(["1gamlib/raf",
     });
 
 
-    window.addEventListener("mouseup", function(e) {
+    Canvas.element.addEventListener("mouseup", function(e) {
         var now = Date.now();
         console.log(now - game.mouse[e.button]);
         if(now - game.mouse[e.button] < 150) {
