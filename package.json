@@ -1,4 +1,13 @@
 {
-	"name": "1gamlib",
-	"version": "0.0.2"
+  "name": "1gamlib",
+  "version": "0.0.2",
+  "readme": "1gamlib\n=======\n\ncollection of reusable amd modules used in 1gam projects\n",
+  "readmeFilename": "README.md",
+  "description": "1gamlib =======",
+  "_id": "1gamlib@0.0.2",
+  "dist": {
+    "shasum": "6b100fd8a61c6ed0f6f8cef9a4257f4deae7a704"
+  },
+  "_resolved": "git://github.com/Armen138/1gamlib.git#874ca5365c4b3e7e6918227626d03139df66d8fe",
+  "_from": "git://github.com/Armen138/1gamlib.git#0.0.2"
 }

@@ -1,5 +1,5 @@
 define(["1gamlib/easing", "1gamlib/canvas", "1gamlib/gui/element"], function(easing, Canvas, Element) {
-    var color = "rgba(0, 0, 0, 0.5)",
+    var color = "rgba(55, 55, 55, 0.5)",
         buffer = 80,
         duration = 500;
 
@@ -8,7 +8,7 @@ define(["1gamlib/easing", "1gamlib/canvas", "1gamlib/gui/element"], function(eas
             position = {X: 0, Y: Canvas.height / 2 - size.height / 2 },
             context = Canvas.context;
         var modal = Element({
-            font: "48px RapscallionRegular",
+            font: "48px customfont",
             position: position,
             size: size,
             lifetime: function() {

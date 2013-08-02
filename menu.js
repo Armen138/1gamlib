@@ -20,7 +20,7 @@ define(["1gamlib/easing"], function(easing) {
             context = canvas.getContext("2d"),
             splashX = 0;
         var paused = {
-            font: "48px GputeksRegular",
+            font: "48px customfont",
             click: function(mouse) {
                 //menu[0].action();
                 if(mouse.X < width) {
@@ -57,7 +57,7 @@ define(["1gamlib/easing"], function(easing) {
                 context.save();
                 context.drawImage(paused.background, 0, 0);
                 if(splash) {
-                    context.drawImage(splash, splashX, canvas.height / 2 - splash.height / 2)
+                    context.drawImage(splash, splashX, canvas.height / 2 - splash.height / 2);
                 }
                 context.fillStyle = color;
                 context.fillRect(position.X - buffer, position.Y, width + buffer, canvas.height);
