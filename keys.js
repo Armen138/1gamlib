@@ -1,4 +1,4 @@
-define({
+exports.keys = {
     BACKSPACE:8,
     TAB:9,
     ENTER:13,
@@ -37,4 +37,4 @@ define({
     D: 68,
     NUMLOCK:144,
     SCROLLLOCK:145
-});
+};

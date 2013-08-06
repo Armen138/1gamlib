@@ -1,9 +1,15 @@
-define(["1gamlib/easing", "1gamlib/canvas", "1gamlib/gui/element"], function(easing, Canvas, Element) {
+(function() {
+    var easing = require("../easing").easing;
+    var Canvas = require("../canvas").Canvas;
+    var Element = require("./element").gui.Element;
     var color = "rgba(55, 55, 55, 0.5)",
         buffer = 80,
         duration = 500;
 
-    return function(size) {
+    if(!exports.gui) {
+        exports.gui = {};
+    }
+    exports.gui.Modal = function(size) {
         var start = 0, from, to,
             position = {X: 0, Y: Canvas.height / 2 - size.height / 2 },
             context = Canvas.context;
@@ -55,4 +61,4 @@ define(["1gamlib/easing", "1gamlib/canvas", "1gamlib/gui/element"], function(eas
         });
         return modal;
     };
-});
+}());

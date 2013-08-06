@@ -1,6 +1,9 @@
-define(["1gamlib/events", "1gamlib/racket"], function(events, Racket) {
+(function() {
+    var events = require("./events").Events;
+    var Racket = require("./racket").Racket;
     if(window._GAME_RESOURCES_) {
-        return window._GAME_RESOURCES_;
+        exports.Resources =  window._GAME_RESOURCES_;
+        return;
     }
     var meshLoader = null;
     var audio = /(wav$|mp3$|ogg$)/;
@@ -86,5 +89,5 @@ define(["1gamlib/events", "1gamlib/racket"], function(events, Racket) {
     // }
     events.attach(resources);
     window._GAME_RESOURCES_ = resources;
-    return resources;
-});
+    exports.Resources = resources;
+}());

@@ -1,8 +1,7 @@
-define(["1gamlib/raf",
-        "1gamlib/canvas"
-        /*"stats.min"*/],
-    function(raf, Canvas /*Stats*/) {
+(function(){
     "strict mode";
+    var raf = require("./raf").raf;
+    var Canvas = require("./canvas").Canvas;
     // var stats = new Stats();
     // stats.domElement.style.position = 'absolute';
     // stats.domElement.style.left = '0px';
@@ -100,18 +99,19 @@ define(["1gamlib/raf",
 
     Canvas.element.addEventListener("mouseup", function(e) {
         var now = Date.now();
+        var x, y;
         console.log(now - game.mouse[e.button]);
         if(now - game.mouse[e.button] < 150) {
             if(game.state && game.state.click) {
-                var x = e.clientX - Canvas.position.X;
-                var y = e.clientY - Canvas.position.Y;
+                x = e.clientX - Canvas.position.X;
+                y = e.clientY - Canvas.position.Y;
                 game.state.click({X: x, Y: y, button: e.button});
             }
         }
         game.mouse[e.button] = null;
         if(game.state && game.state.mouseup) {
-            var x = e.clientX - Canvas.position.X;
-            var y = e.clientY - Canvas.position.Y;
+            x = e.clientX - Canvas.position.X;
+            y = e.clientY - Canvas.position.Y;
             game.state.mouseup({X: x, Y: y, button: e.button});
         }
     });
@@ -146,10 +146,11 @@ define(["1gamlib/raf",
     window.addEventListener("touchend", function(e) {
         console.log("touchend");
         var touches = e.changedTouches;
+        var x, y;
         if(game.state && game.state.mouseup) {
             if(touches.length > 0) {
-                var x = (touches[0].pageX | 0);// - Canvas.position.X;
-                var y = (touches[0].pageY | 0);// - Canvas.position.Y;
+                x = (touches[0].pageX | 0);// - Canvas.position.X;
+                y = (touches[0].pageY | 0);// - Canvas.position.Y;
                 game.state.mouseup({X: x, Y: y});
 
                 //game.touches[touches[0].identifier] = null;
@@ -161,13 +162,13 @@ define(["1gamlib/raf",
             Date.now() - game.touches[touches[0].identifier] < 400 &&*/
             game.state.click) {
             //if(touches.length > 0) {
-                var x = (touches[0].pageX | 0);// - Canvas.position.X;
-                var y = (touches[0].pageY | 0);// - Canvas.position.Y;
+                x = (touches[0].pageX | 0);// - Canvas.position.X;
+                y = (touches[0].pageY | 0);// - Canvas.position.Y;
 
-                game.state.click({X: x, Y: y})
+                game.state.click({X: x, Y: y});
             //}
         }
 
     });
-    return game;
-});
+    exports.game = game;
+}());

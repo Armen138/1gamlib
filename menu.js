@@ -1,4 +1,5 @@
-define(["1gamlib/easing"], function(easing) {
+(function() {
+    var easing = require("./easing").easing;
     var color = "rgba(0, 0, 0, 0.7)",
         width = 324,
         buffer = 80,
@@ -14,13 +15,13 @@ define(["1gamlib/easing"], function(easing) {
         }
         return false;
     }
-    return function(canvas, menu, splash) {
+    var Menu =  function(canvas, menu, splash) {
         var start = 0, from, to,
             position = {X: 0, Y: 0},
             context = canvas.getContext("2d"),
             splashX = 0;
         var paused = {
-            font: "48px customfont",
+            font: "48px Arial",
             click: function(mouse) {
                 //menu[0].action();
                 if(mouse.X < width) {
@@ -105,4 +106,5 @@ define(["1gamlib/easing"], function(easing) {
         };
         return paused;
     };
-});
+    exports.Menu = Menu;
+}());
